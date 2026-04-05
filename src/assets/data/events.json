@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Concert à Tunis",
+    "date": "2026-04-10",
+    "category": "Concert",
+    "lat": 36.8065,
+    "lng": 10.1815
+  },
+  {
+    "id": 2,
+    "name": "Conférence Tech",
+    "date": "2026-04-15",
+    "category": "Conférence",
+    "lat": 35.8256,
+    "lng": 10.63699
+  },
+  {
+    "id": 3,
+    "name": "Salon Entrepreneuriat",
+    "date": "2026-04-20",
+    "category": "Business",
+    "lat": 36.4,
+    "lng": 10.6
+  }
+]

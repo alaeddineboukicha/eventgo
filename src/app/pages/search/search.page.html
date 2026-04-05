@@ -1,13 +1,31 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>search</ion-title>
+    <ion-title>Recherche</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">search</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-input
+      placeholder="Rechercher un événement"
+      [(ngModel)]="keyword">
+    </ion-input>
+  </ion-item>
+
+  <ion-button expand="block" class="ion-margin-top" (click)="searchEvents()">
+    Rechercher
+  </ion-button>
+
+  <ion-card *ngFor="let event of filteredEvents">
+    <ion-card-header>
+      <ion-card-title>{{ event.name }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      Date : {{ event.date }} <br />
+      Catégorie : {{ event.category }}
+    </ion-card-content>
+  </ion-card>
 </ion-content>
+
+<app-bottom-nav active="search"></app-bottom-nav>

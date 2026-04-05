@@ -6,16 +6,28 @@
 
 <ion-content class="ion-padding">
   <ion-item>
-    <ion-input placeholder="Email" type="email"></ion-input>
+    <ion-input
+      placeholder="Email"
+      type="email"
+      [(ngModel)]="email">
+    </ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-input placeholder="Mot de passe" type="password"></ion-input>
+    <ion-input
+      placeholder="Mot de passe"
+      type="password"
+      [(ngModel)]="password">
+    </ion-input>
   </ion-item>
 
-  <ion-button expand="block" routerLink="/home" class="ion-margin-top">
+  <ion-button expand="block" class="ion-margin-top" (click)="login()">
     Se connecter
   </ion-button>
+
+  <ion-text color="danger" *ngIf="message">
+    <p class="ion-padding-top">{{ message }}</p>
+  </ion-text>
 
   <ion-button expand="block" fill="clear" routerLink="/register">
     Créer un compte

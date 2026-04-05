@@ -6,9 +6,13 @@ import {
   IonContent,
   IonItem,
   IonInput,
-  IonButton
+  IonButton,
+  IonText
 } from '@ionic/angular/standalone';
-import { RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { NgIf } from '@angular/common';
+import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'app-register',
@@ -23,7 +27,32 @@ import { RouterLink } from '@angular/router';
     IonItem,
     IonInput,
     IonButton,
-    RouterLink
+    IonText,
+    FormsModule,
+    RouterLink,
+    NgIf
   ],
 })
-export class RegisterPage {}
+export class RegisterPage {
+  name: string = '';
+  email: string = '';
+  password: string = '';
+  message: string = '';
+
+  constructor(private authService: AuthService, private router: Router) {}
+
+  register() {
+    const success = this.authService.register({
+      name: this.name,
+      email: this.email,
+      password: this.password
+    });
+
+    if (success) {
+      this.message = 'Compte créé avec succès';
+      this.router.navigate(['/login']);
+    } else {
+      this.message = 'Cet email existe déjà';
+    }
+  }
+}

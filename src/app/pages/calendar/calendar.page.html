@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ajouter au calendrier</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" *ngIf="event">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ event.name }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      Catégorie : {{ event.category }} <br />
+      Date originale : {{ event.date }}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-datetime
+    presentation="date-time"
+    [(ngModel)]="selectedDate">
+  </ion-datetime>
+
+  <ion-button expand="block" class="ion-margin-top" (click)="saveToCalendar()">
+    Confirmer l’ajout
+  </ion-button>
+</ion-content>

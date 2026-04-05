@@ -32,8 +32,18 @@ export const routes: Routes = [
       import('./pages/search/search.page').then((m) => m.SearchPage),
   },
   {
-    path: 'admin-events',
+    path: 'maps',
     loadComponent: () =>
-      import('./pages/admin-events/admin-events.page').then((m) => m.AdminEventsPage),
+      import('./pages/maps/maps.page').then((m) => m.MapsPage),
   },
+  {
+    path: 'profile',
+    loadComponent: () =>
+      import('./pages/profile/profile.page').then((m) => m.ProfilePage),
+  },
+  {
+    path: 'calendar/:id',
+    loadComponent: () =>
+      import('./pages/calendar/calendar.page').then((m) => m.CalendarPage),
+  }
 ];

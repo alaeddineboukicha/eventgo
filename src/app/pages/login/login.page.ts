@@ -6,9 +6,13 @@ import {
   IonContent,
   IonItem,
   IonInput,
-  IonButton
+  IonButton,
+  IonText
 } from '@ionic/angular/standalone';
-import { RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { NgIf } from '@angular/common';
+import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +27,26 @@ import { RouterLink } from '@angular/router';
     IonItem,
     IonInput,
     IonButton,
-    RouterLink
+    IonText,
+    FormsModule,
+    RouterLink,
+    NgIf
   ],
 })
-export class LoginPage {}
+export class LoginPage {
+  email: string = '';
+  password: string = '';
+  message: string = '';
+
+  constructor(private authService: AuthService, private router: Router) {}
+
+  login() {
+    const success = this.authService.login(this.email, this.password);
+
+    if (success) {
+      this.router.navigate(['/home']);
+    } else {
+      this.message = 'Email ou mot de passe incorrect';
+    }
+  }
+}

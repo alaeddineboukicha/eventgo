@@ -1,0 +1,45 @@
+<ion-footer>
+  <ion-toolbar class="bottom-nav">
+    <div class="nav-container">
+      <ion-button
+        fill="clear"
+        [class.active]="active === 'home'"
+        routerLink="/home">
+        <div class="nav-item">
+          <ion-icon name="home-outline"></ion-icon>
+          <ion-label>Accueil</ion-label>
+        </div>
+      </ion-button>
+
+      <ion-button
+        fill="clear"
+        [class.active]="active === 'search'"
+        routerLink="/search">
+        <div class="nav-item">
+          <ion-icon name="search-outline"></ion-icon>
+          <ion-label>Recherche</ion-label>
+        </div>
+      </ion-button>
+
+      <ion-button
+        fill="clear"
+        [class.active]="active === 'maps'"
+        routerLink="/maps">
+        <div class="nav-item">
+          <ion-icon name="map-outline"></ion-icon>
+          <ion-label>Maps</ion-label>
+        </div>
+      </ion-button>
+
+      <ion-button
+        fill="clear"
+        [class.active]="active === 'profile'"
+        routerLink="/profile">
+        <div class="nav-item">
+          <ion-icon name="person-outline"></ion-icon>
+          <ion-label>Profil</ion-label>
+        </div>
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

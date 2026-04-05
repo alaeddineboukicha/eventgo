@@ -1,0 +1,9 @@
+ion-content {
+  --padding-bottom: 90px;
+}
+
+#map {
+  width: 100%;
+  height: calc(100vh - 170px);
+  min-height: 500px;
+}

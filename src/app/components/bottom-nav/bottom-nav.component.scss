@@ -1,0 +1,33 @@
+.bottom-nav {
+  --background: #1f1f1f;
+  border-top: 1px solid #333;
+  padding: 6px 0;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+ion-button {
+  --color: #d0d0d0;
+  flex: 1;
+  margin: 0;
+}
+
+ion-button.active {
+  --color: #4c8dff;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  gap: 4px;
+}
+
+ion-icon {
+  font-size: 22px;
+}

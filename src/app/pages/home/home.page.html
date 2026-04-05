@@ -7,27 +7,26 @@
 <ion-content class="ion-padding">
   <h2>Liste des événements</h2>
 
-  <ion-card>
+  <ion-card *ngFor="let event of events">
     <ion-card-header>
-      <ion-card-title>Concert à Tunis</ion-card-title>
+      <ion-card-title>{{ event.name }}</ion-card-title>
     </ion-card-header>
-    <ion-card-content>
-      Date : 10/04/2026 <br />
-      Catégorie : Concert
-    </ion-card-content>
-  </ion-card>
 
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Conférence Tech</ion-card-title>
-    </ion-card-header>
     <ion-card-content>
-      Date : 15/04/2026 <br />
-      Catégorie : Conférence
+      Date : {{ event.date }} <br />
+      Catégorie : {{ event.category }}
     </ion-card-content>
-  </ion-card>
 
-  <ion-button expand="block" routerLink="/search">
-    Rechercher un événement
-  </ion-button>
+    <div class="btn-group">
+      <ion-button expand="block" (click)="registerEvent(event)">
+        S'inscrire
+      </ion-button>
+
+      <ion-button expand="block" fill="outline" (click)="openCalendar(event)">
+        Ajouter au calendrier
+      </ion-button>
+    </div>
+  </ion-card>
 </ion-content>
+
+<app-bottom-nav active="home"></app-bottom-nav>
