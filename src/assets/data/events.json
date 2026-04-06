@@ -3,7 +3,11 @@
     "id": 1,
     "name": "Concert à Tunis",
     "date": "2026-04-10",
+    "time": "20:00",
+    "duration": "180 minutes",
     "category": "Concert",
+    "location": "Théâtre municipal de Tunis",
+    "description": "Un grand concert live avec plusieurs artistes tunisiens et invités internationaux dans une ambiance festive.",
     "lat": 36.8065,
     "lng": 10.1815
   },
@@ -11,7 +15,11 @@
     "id": 2,
     "name": "Conférence Tech",
     "date": "2026-04-15",
+    "time": "09:30",
+    "duration": "120 minutes",
     "category": "Conférence",
+    "location": "Hôtel Laico Tunis",
+    "description": "Une conférence dédiée aux nouvelles technologies, à l’intelligence artificielle et au développement logiciel.",
     "lat": 35.8256,
     "lng": 10.63699
   },
@@ -19,7 +27,11 @@
     "id": 3,
     "name": "Salon Entrepreneuriat",
     "date": "2026-04-20",
+    "time": "15:00",
+    "duration": "240 minutes",
     "category": "Business",
+    "location": "Palais des Congrès de Tunis",
+    "description": "Un salon de rencontre entre entrepreneurs, startups, investisseurs et porteurs de projets innovants.",
     "lat": 36.4,
     "lng": 10.6
   }

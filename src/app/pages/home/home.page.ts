@@ -24,7 +24,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { addIcons } from 'ionicons';
-import { heart, heartOutline, starOutline } from 'ionicons/icons';
+import { heart, heartOutline, starOutline, timeOutline, calendarOutline, locationOutline, informationCircleOutline } from 'ionicons/icons';
 import { MenuController } from '@ionic/angular';
 import { AuthService } from '../../services/auth';
 import { BottomNavComponent } from '../../components/bottom-nav/bottom-nav.component';
@@ -64,13 +64,24 @@ export class HomePage implements OnInit {
   selectedEvent: any = null;
   selectedDate: string = '';
 
+  isDetailsModalOpen = false;
+  detailEvent: any = null;
+
   constructor(
     private http: HttpClient,
     private authService: AuthService,
     private router: Router,
     private menuCtrl: MenuController
   ) {
-    addIcons({ heart, heartOutline, starOutline });
+    addIcons({
+      heart,
+      heartOutline,
+      starOutline,
+      timeOutline,
+      calendarOutline,
+      locationOutline,
+      informationCircleOutline
+    });
   }
 
   ngOnInit() {
@@ -120,7 +131,7 @@ export class HomePage implements OnInit {
 
   openCalendar(event: any) {
     this.selectedEvent = event;
-    this.selectedDate = `${event.date}T18:00`;
+    this.selectedDate = `${event.date}T${event.time || '18:00'}`;
     this.isCalendarModalOpen = true;
   }
 
@@ -193,6 +204,16 @@ export class HomePage implements OnInit {
     }
 
     localStorage.setItem('favorites', JSON.stringify(favorites));
+  }
+
+  openDetails(event: any) {
+    this.detailEvent = event;
+    this.isDetailsModalOpen = true;
+  }
+
+  closeDetailsModal() {
+    this.isDetailsModalOpen = false;
+    this.detailEvent = null;
   }
 
   async goToFavorites() {

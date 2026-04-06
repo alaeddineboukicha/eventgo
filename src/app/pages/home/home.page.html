@@ -1,3 +1,4 @@
+<!-- MENU LATÉRAL -->
 <ion-menu contentId="main-content" side="start" type="overlay">
   <ion-header>
     <ion-toolbar>
@@ -13,13 +14,14 @@
       </ion-item>
 
       <ion-item button (click)="goToProfile()">
-        <ion-icon name="star-outline" slot="start"></ion-icon>
+        <ion-icon name="person-outline" slot="start"></ion-icon>
         <ion-label>Profil</ion-label>
       </ion-item>
     </ion-list>
   </ion-content>
 </ion-menu>
 
+<!-- HEADER -->
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -29,26 +31,38 @@
   </ion-toolbar>
 </ion-header>
 
+<!-- CONTENU PRINCIPAL -->
 <ion-content id="main-content" class="home-content ion-padding">
   <h2>Liste des événements</h2>
 
+  <!-- LISTE EVENTS -->
   <ion-card *ngFor="let event of events" class="event-card">
+
     <ion-card-header>
       <div class="card-top">
-        <ion-card-title>{{ event.name }}</ion-card-title>
 
+        <!-- TITRE CLIQUABLE -->
+        <ion-card-title class="clickable-title" (click)="openDetails(event)">
+          {{ event.name }}
+        </ion-card-title>
+
+        <!-- FAVORI -->
         <ion-button fill="clear" class="favorite-btn" (click)="toggleFavorite(event)">
           <ion-icon [name]="isFavorite(event) ? 'heart' : 'heart-outline'"></ion-icon>
         </ion-button>
+
       </div>
     </ion-card-header>
 
     <ion-card-content>
       <p><strong>Date :</strong> {{ event.date }}</p>
       <p><strong>Catégorie :</strong> {{ event.category }}</p>
+      <p><strong>Heure :</strong> {{ event.time }}</p>
     </ion-card-content>
 
+    <!-- BOUTONS -->
     <div class="btn-group">
+
       <ion-button expand="block" class="primary-btn" (click)="registerEvent(event)">
         S'inscrire
       </ion-button>
@@ -56,9 +70,15 @@
       <ion-button expand="block" fill="outline" class="secondary-btn" (click)="openCalendar(event)">
         Ajouter au calendrier
       </ion-button>
+
+      <ion-button expand="block" fill="clear" class="details-btn" (click)="openDetails(event)">
+        Voir les détails
+      </ion-button>
+
     </div>
   </ion-card>
 
+  <!-- POPUP CALENDRIER -->
   <ion-modal [isOpen]="isCalendarModalOpen" class="calendar-modal">
     <ng-template>
       <ion-header>
@@ -68,6 +88,7 @@
       </ion-header>
 
       <ion-content class="calendar-modal-content ion-padding" *ngIf="selectedEvent">
+
         <ion-card class="calendar-card">
           <ion-card-header>
             <ion-card-title>{{ selectedEvent.name }}</ion-card-title>
@@ -75,7 +96,8 @@
 
           <ion-card-content>
             <p><strong>Catégorie :</strong> {{ selectedEvent.category }}</p>
-            <p><strong>Date originale :</strong> {{ selectedEvent.date }}</p>
+            <p><strong>Date :</strong> {{ selectedEvent.date }}</p>
+            <p><strong>Heure :</strong> {{ selectedEvent.time }}</p>
           </ion-card-content>
         </ion-card>
 
@@ -88,15 +110,73 @@
         </ion-input>
 
         <ion-button expand="block" class="primary-btn ion-margin-top" (click)="saveToCalendar()">
-          Confirmer l’ajout
+          Confirmer
         </ion-button>
 
-        <ion-button expand="block" fill="clear" class="cancel-btn" (click)="closeCalendarModal()">
+        <ion-button expand="block" fill="clear" (click)="closeCalendarModal()">
           Annuler
         </ion-button>
+
       </ion-content>
     </ng-template>
   </ion-modal>
+
+  <!-- POPUP DÉTAILS (CORRIGÉ) -->
+  <div class="details-overlay" *ngIf="isDetailsModalOpen">
+    <div class="details-popup" *ngIf="detailEvent">
+
+      <div class="details-header">
+        <h2>Détails de l'événement</h2>
+        <button class="close-btn" (click)="closeDetailsModal()">×</button>
+      </div>
+
+      <div class="details-body">
+
+        <h3 class="detail-title">{{ detailEvent.name }}</h3>
+        <p class="detail-description">{{ detailEvent.description }}</p>
+
+        <div class="detail-grid">
+
+          <div class="detail-box">
+            <ion-icon name="calendar-outline"></ion-icon>
+            <span>{{ detailEvent.date }}</span>
+          </div>
+
+          <div class="detail-box">
+            <ion-icon name="time-outline"></ion-icon>
+            <span>{{ detailEvent.time }}</span>
+          </div>
+
+          <div class="detail-box">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <span>{{ detailEvent.duration }}</span>
+          </div>
+
+          <div class="detail-box">
+            <ion-icon name="location-outline"></ion-icon>
+            <span>{{ detailEvent.location }}</span>
+          </div>
+
+        </div>
+
+        <ion-button expand="block" class="primary-btn" (click)="registerEvent(detailEvent)">
+          S'inscrire
+        </ion-button>
+
+        <ion-button expand="block" fill="outline" class="secondary-btn ion-margin-top" (click)="openCalendar(detailEvent)">
+          Ajouter au calendrier
+        </ion-button>
+
+        <ion-button expand="block" fill="clear" (click)="closeDetailsModal()">
+          Fermer
+        </ion-button>
+
+      </div>
+
+    </div>
+  </div>
+
 </ion-content>
 
+<!-- NAVIGATION BAS -->
 <app-bottom-nav active="home"></app-bottom-nav>
