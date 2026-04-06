@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   IonHeader,
   IonToolbar,
@@ -35,14 +35,16 @@ import { BottomNavComponent } from '../../components/bottom-nav/bottom-nav.compo
     BottomNavComponent
   ],
 })
-export class HomePage {
+export class HomePage implements OnInit {
   events: any[] = [];
 
   constructor(
     private http: HttpClient,
     private authService: AuthService,
     private router: Router
-  ) {
+  ) {}
+
+  ngOnInit() {
     this.loadEvents();
   }
 
@@ -57,8 +59,7 @@ export class HomePage {
     const user = this.authService.getCurrentUser();
 
     if (!user) {
-      alert('Veuillez vous connecter');
-      this.router.navigate(['/login']);
+      this.router.navigateByUrl('/login');
       return;
     }
 
@@ -84,6 +85,6 @@ export class HomePage {
   }
 
   openCalendar(event: any) {
-    this.router.navigate(['/calendar', event.id]);
+    this.router.navigateByUrl(`/calendar/${event.id}`);
   }
 }

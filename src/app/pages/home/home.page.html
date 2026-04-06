@@ -4,25 +4,25 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="home-content ion-padding">
   <h2>Liste des événements</h2>
 
-  <ion-card *ngFor="let event of events">
+  <ion-card *ngFor="let event of events" class="event-card">
     <ion-card-header>
       <ion-card-title>{{ event.name }}</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
-      Date : {{ event.date }} <br />
-      Catégorie : {{ event.category }}
+      <p><strong>Date :</strong> {{ event.date }}</p>
+      <p><strong>Catégorie :</strong> {{ event.category }}</p>
     </ion-card-content>
 
     <div class="btn-group">
-      <ion-button expand="block" (click)="registerEvent(event)">
+      <ion-button expand="block" class="primary-btn" (click)="registerEvent(event)">
         S'inscrire
       </ion-button>
 
-      <ion-button expand="block" fill="outline" (click)="openCalendar(event)">
+      <ion-button expand="block" fill="outline" class="secondary-btn" (click)="openCalendar(event)">
         Ajouter au calendrier
       </ion-button>
     </div>

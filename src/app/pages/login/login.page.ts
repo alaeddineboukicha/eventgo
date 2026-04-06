@@ -7,10 +7,12 @@ import {
   IonItem,
   IonInput,
   IonButton,
-  IonText
+  IonText,
+  IonCard,
+  IonCardContent
 } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { AuthService } from '../../services/auth';
 
@@ -28,8 +30,9 @@ import { AuthService } from '../../services/auth';
     IonInput,
     IonButton,
     IonText,
+    IonCard,
+    IonCardContent,
     FormsModule,
-    RouterLink,
     NgIf
   ],
 })
@@ -44,9 +47,13 @@ export class LoginPage {
     const success = this.authService.login(this.email, this.password);
 
     if (success) {
-      this.router.navigate(['/home']);
+      this.router.navigateByUrl('/home', { replaceUrl: true });
     } else {
       this.message = 'Email ou mot de passe incorrect';
     }
+  }
+
+  goToRegister() {
+    this.router.navigateByUrl('/register');
   }
 }

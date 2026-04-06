@@ -1,3 +1,22 @@
-ion-content {
+.calendar-content {
+  --background: #0b1220;
   --padding-bottom: 30px;
+}
+
+.calendar-card {
+  border-radius: 18px;
+  background: #111827;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.calendar-card p {
+  color: #cbd5e1;
+}
+
+.confirm-btn {
+  --background: #2563eb;
+  --color: #fff;
+  --border-radius: 12px;
+  height: 48px;
 }

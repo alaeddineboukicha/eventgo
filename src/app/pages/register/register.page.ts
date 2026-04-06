@@ -7,10 +7,12 @@ import {
   IonItem,
   IonInput,
   IonButton,
-  IonText
+  IonText,
+  IonCard,
+  IonCardContent
 } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { AuthService } from '../../services/auth';
 
@@ -28,8 +30,9 @@ import { AuthService } from '../../services/auth';
     IonInput,
     IonButton,
     IonText,
+    IonCard,
+    IonCardContent,
     FormsModule,
-    RouterLink,
     NgIf
   ],
 })
@@ -49,10 +52,13 @@ export class RegisterPage {
     });
 
     if (success) {
-      this.message = 'Compte créé avec succès';
-      this.router.navigate(['/login']);
+      this.router.navigateByUrl('/login', { replaceUrl: true });
     } else {
       this.message = 'Cet email existe déjà';
     }
+  }
+
+  goToLogin() {
+    this.router.navigateByUrl('/login');
   }
 }

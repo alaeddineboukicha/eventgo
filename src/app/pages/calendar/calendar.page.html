@@ -4,15 +4,15 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding" *ngIf="event">
-  <ion-card>
+<ion-content class="calendar-content ion-padding" *ngIf="event">
+  <ion-card class="calendar-card">
     <ion-card-header>
       <ion-card-title>{{ event.name }}</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
-      Catégorie : {{ event.category }} <br />
-      Date originale : {{ event.date }}
+      <p><strong>Catégorie :</strong> {{ event.category }}</p>
+      <p><strong>Date originale :</strong> {{ event.date }}</p>
     </ion-card-content>
   </ion-card>
 
@@ -21,7 +21,7 @@
     [(ngModel)]="selectedDate">
   </ion-datetime>
 
-  <ion-button expand="block" class="ion-margin-top" (click)="saveToCalendar()">
+  <ion-button expand="block" class="confirm-btn ion-margin-top" (click)="saveToCalendar()">
     Confirmer l’ajout
   </ion-button>
 </ion-content>

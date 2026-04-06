@@ -1,9 +1,15 @@
-ion-content {
-  --padding-bottom: 90px;
+.maps-content {
+  --background: #f8fafc;
 }
 
 #map {
   width: 100%;
   height: calc(100vh - 170px);
   min-height: 500px;
+}
+
+ion-fab-button {
+  --background: #3b82f6;
+  --color: #fff;
+  box-shadow: 0 8px 18px rgba(59, 130, 246, 0.35);
 }

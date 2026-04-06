@@ -4,19 +4,19 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <ion-item>
+<ion-content class="search-content ion-padding">
+  <ion-item class="search-item">
     <ion-input
       placeholder="Rechercher un événement"
       [(ngModel)]="keyword">
     </ion-input>
   </ion-item>
 
-  <ion-button expand="block" class="ion-margin-top" (click)="searchEvents()">
+  <ion-button expand="block" class="search-btn ion-margin-top" (click)="searchEvents()">
     Rechercher
   </ion-button>
 
-  <ion-card *ngFor="let event of filteredEvents">
+  <ion-card *ngFor="let event of filteredEvents" class="search-card">
     <ion-card-header>
       <ion-card-title>{{ event.name }}</ion-card-title>
     </ion-card-header>

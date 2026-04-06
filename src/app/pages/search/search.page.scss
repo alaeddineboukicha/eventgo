@@ -1,7 +1,28 @@
-ion-content {
-  --padding-bottom: 90px;
+.search-content {
+  --background: #f8fafc;
+  --padding-bottom: 100px;
 }
 
-ion-card {
+.search-item {
+  --background: #ffffff;
+  --border-color: transparent;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+  color: #0f172a;
+}
+
+.search-btn {
+  --background: #3b82f6;
+  --color: #fff;
+  --border-radius: 14px;
+  height: 46px;
+  font-weight: 600;
+}
+
+.search-card {
   margin-top: 16px;
+  border-radius: 18px;
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
 }

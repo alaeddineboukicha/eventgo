@@ -1,3 +1,24 @@
-ion-content {
-  --padding-bottom: 90px;
+.profile-content {
+  --background: #f8fafc;
+  --padding-bottom: 100px;
+}
+
+.profile-card {
+  border-radius: 20px;
+  background: #ffffff;
+  color: #0f172a;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+.profile-card p {
+  color: #475569;
+}
+
+.logout-btn {
+  --background: #ef4444;
+  --color: #ffffff;
+  --border-radius: 14px;
+  height: 48px;
+  font-weight: 600;
 }

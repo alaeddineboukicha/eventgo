@@ -10,7 +10,7 @@ import {
   IonCardTitle,
   IonCardContent
 } from '@ionic/angular/standalone';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth';
 import { BottomNavComponent } from '../../components/bottom-nav/bottom-nav.component';
@@ -31,6 +31,7 @@ import { BottomNavComponent } from '../../components/bottom-nav/bottom-nav.compo
     IonCardTitle,
     IonCardContent,
     CommonModule,
+    NgIf,
     BottomNavComponent
   ],
 })
@@ -43,6 +44,6 @@ export class ProfilePage {
 
   logout() {
     this.authService.logout();
-    this.router.navigate(['/login']);
+    this.router.navigateByUrl('/login', { replaceUrl: true });
   }
 }

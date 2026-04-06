@@ -1,7 +1,20 @@
-html, body, ion-app {
+html,
+body,
+ion-app {
   height: 100%;
+  background: #f8fafc;
 }
 
 ion-content {
-  --padding-bottom: 90px;
+  --padding-bottom: 100px;
+}
+
+ion-toolbar {
+  --background: #ffffff;
+  --color: #0f172a;
+  box-shadow: 0 1px 8px rgba(15, 23, 42, 0.06);
+}
+
+ion-title {
+  font-weight: 700;
 }

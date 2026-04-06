@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   IonHeader,
   IonToolbar,
@@ -35,11 +35,13 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
 })
-export class CalendarPage {
+export class CalendarPage implements OnInit {
   event: any = null;
   selectedDate: string = new Date().toISOString();
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute, private router: Router) {}
+
+  ngOnInit() {
     const eventId = Number(this.route.snapshot.paramMap.get('id'));
     const events = JSON.parse(localStorage.getItem('events') || '[]');
     this.event = events.find((e: any) => e.id === eventId);
@@ -57,6 +59,6 @@ export class CalendarPage {
 
     localStorage.setItem('calendar', JSON.stringify(calendar));
     alert('Événement ajouté au calendrier');
-    this.router.navigate(['/home']);
+    this.router.navigateByUrl('/home', { replaceUrl: true });
   }
 }
