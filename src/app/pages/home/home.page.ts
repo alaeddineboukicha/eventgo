@@ -1,18 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  IonMenu,
   IonHeader,
   IonToolbar,
   IonTitle,
   IonContent,
+  IonButtons,
+  IonMenuButton,
+  IonList,
+  IonItem,
+  IonLabel,
   IonCard,
   IonCardHeader,
   IonCardTitle,
   IonCardContent,
-  IonButton
+  IonButton,
+  IonIcon,
+  IonModal,
+  IonInput
 } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { addIcons } from 'ionicons';
+import { heart, heartOutline, starOutline } from 'ionicons/icons';
+import { MenuController } from '@ionic/angular';
 import { AuthService } from '../../services/auth';
 import { BottomNavComponent } from '../../components/bottom-nav/bottom-nav.component';
 
@@ -22,27 +35,43 @@ import { BottomNavComponent } from '../../components/bottom-nav/bottom-nav.compo
   styleUrls: ['./home.page.scss'],
   standalone: true,
   imports: [
+    IonMenu,
     IonHeader,
     IonToolbar,
     IonTitle,
     IonContent,
+    IonButtons,
+    IonMenuButton,
+    IonList,
+    IonItem,
+    IonLabel,
     IonCard,
     IonCardHeader,
     IonCardTitle,
     IonCardContent,
     IonButton,
+    IonIcon,
+    IonModal,
+    IonInput,
     CommonModule,
+    FormsModule,
     BottomNavComponent
   ],
 })
 export class HomePage implements OnInit {
   events: any[] = [];
+  isCalendarModalOpen = false;
+  selectedEvent: any = null;
+  selectedDate: string = '';
 
   constructor(
     private http: HttpClient,
     private authService: AuthService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private menuCtrl: MenuController
+  ) {
+    addIcons({ heart, heartOutline, starOutline });
+  }
 
   ngOnInit() {
     this.loadEvents();
@@ -55,11 +84,16 @@ export class HomePage implements OnInit {
     });
   }
 
+  getCurrentUserId() {
+    const user = this.authService.getCurrentUser();
+    return user ? user.id : 'guest';
+  }
+
   registerEvent(event: any) {
     const user = this.authService.getCurrentUser();
 
     if (!user) {
-      this.router.navigateByUrl('/login');
+      window.location.href = '/login';
       return;
     }
 
@@ -85,6 +119,89 @@ export class HomePage implements OnInit {
   }
 
   openCalendar(event: any) {
-    this.router.navigateByUrl(`/calendar/${event.id}`);
+    this.selectedEvent = event;
+    this.selectedDate = `${event.date}T18:00`;
+    this.isCalendarModalOpen = true;
+  }
+
+  closeCalendarModal() {
+    this.isCalendarModalOpen = false;
+    this.selectedEvent = null;
+  }
+
+  saveToCalendar() {
+    const userId = this.getCurrentUserId();
+    let calendar = JSON.parse(localStorage.getItem('calendar') || '[]');
+
+    const existingIndex = calendar.findIndex(
+      (c: any) => c.userId === userId && c.eventId === this.selectedEvent.id
+    );
+
+    if (existingIndex !== -1) {
+      const confirmChange = window.confirm(
+        'Cet événement existe déjà dans votre calendrier. Voulez-vous changer la date choisie ?'
+      );
+
+      if (!confirmChange) {
+        return;
+      }
+
+      calendar[existingIndex] = {
+        userId,
+        eventId: this.selectedEvent.id,
+        eventName: this.selectedEvent.name,
+        eventCategory: this.selectedEvent.category,
+        chosenDate: this.selectedDate
+      };
+    } else {
+      calendar.push({
+        userId,
+        eventId: this.selectedEvent.id,
+        eventName: this.selectedEvent.name,
+        eventCategory: this.selectedEvent.category,
+        chosenDate: this.selectedDate
+      });
+    }
+
+    localStorage.setItem('calendar', JSON.stringify(calendar));
+    alert('Événement ajouté au calendrier');
+    this.closeCalendarModal();
+  }
+
+  isFavorite(event: any): boolean {
+    const userId = this.getCurrentUserId();
+    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    return favorites.some((f: any) => f.userId === userId && f.eventId === event.id);
+  }
+
+  toggleFavorite(event: any) {
+    const userId = this.getCurrentUserId();
+    let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+
+    const existingIndex = favorites.findIndex(
+      (f: any) => f.userId === userId && f.eventId === event.id
+    );
+
+    if (existingIndex !== -1) {
+      favorites.splice(existingIndex, 1);
+    } else {
+      favorites.push({
+        userId,
+        eventId: event.id,
+        event
+      });
+    }
+
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }
+
+  async goToFavorites() {
+    await this.menuCtrl.close();
+    window.location.href = '/favorites';
+  }
+
+  async goToProfile() {
+    await this.menuCtrl.close();
+    window.location.href = '/profile';
   }
 }

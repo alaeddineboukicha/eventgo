@@ -1,24 +1,18 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Connexion</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="auth-page">
+  <div class="auth-overlay"></div>
 
-<ion-content class="login-content ion-padding">
-  <ion-card class="auth-card">
-    <ion-card-content>
-      <h2>Bienvenue</h2>
-      <p>Connectez-vous pour accéder à votre application.</p>
+  <div class="auth-wrapper">
+    <div class="auth-box">
+      <h1>Se connecter à EventGo</h1>
 
-      <ion-item class="custom-item">
+      <ion-item class="input-item">
         <ion-input
-          placeholder="Email"
-          type="email"
+          placeholder="Numéro, nom de profil ou e-mail"
           [(ngModel)]="email">
         </ion-input>
       </ion-item>
 
-      <ion-item class="custom-item">
+      <ion-item class="input-item">
         <ion-input
           placeholder="Mot de passe"
           type="password"
@@ -26,17 +20,19 @@
         </ion-input>
       </ion-item>
 
-      <ion-button expand="block" class="primary-btn ion-margin-top" (click)="login()">
+      <ion-button expand="block" class="login-btn" (click)="login()">
         Se connecter
       </ion-button>
 
-      <ion-text color="danger" *ngIf="message">
-        <p class="error-text">{{ message }}</p>
-      </ion-text>
+      <div class="error-box" *ngIf="message">
+        {{ message }}
+      </div>
 
-      <ion-button expand="block" fill="clear" class="link-btn" (click)="goToRegister()">
+      <p class="forgot-text">Mot de passe oublié ?</p>
+
+      <ion-button expand="block" fill="clear" class="register-link" (click)="goToRegister()">
         Créer un compte
       </ion-button>
-    </ion-card-content>
-  </ion-card>
+    </div>
+  </div>
 </ion-content>

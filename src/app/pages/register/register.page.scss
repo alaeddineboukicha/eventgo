@@ -1,3 +1,82 @@
-ion-content {
-  --padding-bottom: 30px;
+.auth-page {
+  --background: url('/assets/images/splash-bg.jpg') no-repeat center center / cover;
+  position: relative;
+}
+
+.auth-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.72),
+    rgba(15, 23, 42, 0.82)
+  );
+}
+
+.auth-wrapper {
+  position: relative;
+  z-index: 2;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.auth-box {
+  width: 100%;
+  max-width: 440px;
+  padding: 30px 24px;
+  border-radius: 24px;
+  background: rgba(17, 24, 39, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.auth-box h1 {
+  margin-bottom: 26px;
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.input-item {
+  --background: transparent;
+  --border-color: #374151;
+  --highlight-color-focused: #3b82f6;
+  border: 1px solid #374151;
+  border-radius: 16px;
+  margin-bottom: 18px;
+  --padding-start: 14px;
+  --inner-padding-end: 14px;
+  color: #ffffff;
+}
+
+.login-btn {
+  --background: #1d4f91;
+  --color: #ffffff;
+  --border-radius: 18px;
+  height: 48px;
+  margin-top: 10px;
+  font-weight: 700;
+  text-transform: none;
+}
+
+.error-box {
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(239, 68, 68, 0.14);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #f87171;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.register-link {
+  margin-top: 10px;
+  --color: #93c5fd;
+  text-transform: none;
 }

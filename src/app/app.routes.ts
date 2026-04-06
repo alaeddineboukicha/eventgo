@@ -42,8 +42,12 @@ export const routes: Routes = [
       import('./pages/profile/profile.page').then((m) => m.ProfilePage),
   },
   {
-    path: 'calendar/:id',
+    path: 'favorites',
     loadComponent: () =>
-      import('./pages/calendar/calendar.page').then((m) => m.CalendarPage),
+      import('./pages/favorites/favorites.page').then((m) => m.FavoritesPage),
+  },
+  {
+    path: 'favorites',
+    loadComponent: () => import('./pages/favorites/favorites.page').then( m => m.FavoritesPage)
   }
 ];

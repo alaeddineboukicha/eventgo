@@ -6,7 +6,6 @@ import {
   IonLabel
 } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import {
   homeOutline,
@@ -25,11 +24,11 @@ import {
 export class BottomNavComponent {
   @Input() active: string = '';
 
-  constructor(private router: Router) {
+  constructor() {
     addIcons({ homeOutline, searchOutline, mapOutline, personOutline });
   }
 
   goTo(path: string) {
-    this.router.navigateByUrl(path, { replaceUrl: true });
+    window.location.href = path;
   }
 }

@@ -1,0 +1,29 @@
+.favorites-content {
+  --background: #f8fafc;
+  --padding-bottom: 100px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #0f172a;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.favorite-card {
+  margin-bottom: 18px;
+  border-radius: 20px;
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+.favorite-card p {
+  color: #475569;
+}
+
+.empty-text {
+  color: #64748b;
+  text-align: center;
+  margin-top: 30px;
+}

@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Événements favoris</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="favorites-content ion-padding">
+  <h2>Mes favoris</h2>
+
+  <ion-card *ngFor="let event of favorites" class="favorite-card">
+    <ion-card-header>
+      <ion-card-title>{{ event.name }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p><strong>Date :</strong> {{ event.date }}</p>
+      <p><strong>Catégorie :</strong> {{ event.category }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <p *ngIf="favorites.length === 0" class="empty-text">
+    Aucun événement favori pour le moment.
+  </p>
+</ion-content>
+
+<app-bottom-nav active="home"></app-bottom-nav>

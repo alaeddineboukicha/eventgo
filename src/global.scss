@@ -2,7 +2,13 @@ html,
 body,
 ion-app {
   height: 100%;
-  background: #f8fafc;
+  background: #0f1117;
+  font-family: 'Poppins', sans-serif;
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
 }
 
 ion-content {
@@ -11,10 +17,19 @@ ion-content {
 
 ion-toolbar {
   --background: #ffffff;
-  --color: #0f172a;
+  --color: #111827;
   box-shadow: 0 1px 8px rgba(15, 23, 42, 0.06);
 }
 
 ion-title {
   font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+}
+
+ion-button {
+  font-family: 'Poppins', sans-serif;
+}
+ion-input {
+  --color: #ffffff;
+  --placeholder-color: #9ca3af;
 }
