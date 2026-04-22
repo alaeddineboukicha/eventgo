@@ -1,5 +1,5 @@
 .maps-content {
-  --background: #f8fafc;
+  --background: linear-gradient(180deg, #fff8f9 0%, #fadadd 100%);
 }
 
 #map {
@@ -9,7 +9,7 @@
 }
 
 ion-fab-button {
-  --background: #3b82f6;
+  --background: linear-gradient(135deg, var(--app-accent), var(--app-primary));
   --color: #fff;
-  box-shadow: 0 8px 18px rgba(59, 130, 246, 0.35);
+  box-shadow: 0 12px 24px rgba(76, 110, 245, 0.28);
 }

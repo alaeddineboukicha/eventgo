@@ -7,10 +7,11 @@
 }
 
 .bottom-nav-toolbar {
-  --background: #ffffff;
-  --border-color: #e5e7eb;
+  --background: rgba(255, 255, 255, 0.95);
+  --border-color: rgba(90, 103, 216, 0.12);
   --min-height: 74px;
-  box-shadow: 0 -6px 18px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 -14px 32px rgba(90, 103, 216, 0.16);
+  backdrop-filter: blur(14px);
 }
 
 .bottom-nav-container {
@@ -30,18 +31,23 @@
   align-items: center;
   justify-content: center;
   gap: 4px;
-  color: #94a3b8;
+  color: var(--app-text-muted);
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .nav-btn ion-icon {
   font-size: 22px;
 }
 
+.nav-btn:hover {
+  transform: translateY(-2px);
+}
+
 .nav-btn.active {
-  color: #3b82f6;
+  color: var(--app-primary);
 }
 
 .nav-btn ion-label {

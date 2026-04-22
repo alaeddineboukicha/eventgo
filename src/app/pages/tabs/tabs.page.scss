@@ -1,7 +1,7 @@
 ion-tab-bar {
-  --background: #1e1e1e;
-  --color: #bdbdbd;
-  --color-selected: #4c8dff;
-  border-top: 1px solid #2f2f2f;
+  --background: rgba(255, 255, 255, 0.96);
+  --color: #718096;
+  --color-selected: #4c6ef5;
+  border-top: 1px solid rgba(90, 103, 216, 0.12);
   height: 72px;
 }

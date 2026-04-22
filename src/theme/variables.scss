@@ -1,2 +1,59 @@
 // For information on how to create your own theme, please refer to:
 // https://ionicframework.com/docs/theming/
+
+:root {
+  --ion-color-primary: #4c6ef5;
+  --ion-color-primary-rgb: 76, 110, 245;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #435fda;
+  --ion-color-primary-tint: #617df6;
+
+  --ion-color-secondary: #5a67d8;
+  --ion-color-secondary-rgb: 90, 103, 216;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #4f5bc0;
+  --ion-color-secondary-tint: #6b76dc;
+
+  --ion-color-tertiary: #a7c7e7;
+  --ion-color-tertiary-rgb: 167, 199, 231;
+  --ion-color-tertiary-contrast: #2d3748;
+  --ion-color-tertiary-contrast-rgb: 45, 55, 72;
+  --ion-color-tertiary-shade: #93afd0;
+  --ion-color-tertiary-tint: #b0cdea;
+
+  --ion-color-success: #81e6d9;
+  --ion-color-success-rgb: 129, 230, 217;
+  --ion-color-success-contrast: #2d3748;
+  --ion-color-success-contrast-rgb: 45, 55, 72;
+  --ion-color-success-shade: #71cbbf;
+  --ion-color-success-tint: #8ee9de;
+
+  --ion-color-warning: #f6ad55;
+  --ion-color-warning-rgb: 246, 173, 85;
+  --ion-color-warning-contrast: #2d3748;
+  --ion-color-warning-contrast-rgb: 45, 55, 72;
+  --ion-color-warning-shade: #d8984b;
+  --ion-color-warning-tint: #f7b668;
+
+  --ion-color-danger: #fc8181;
+  --ion-color-danger-rgb: 252, 129, 129;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #de7171;
+  --ion-color-danger-tint: #fc8e8e;
+
+  --app-bg: #fadadd;
+  --app-surface: #ffffff;
+  --app-surface-muted: #f7fafc;
+  --app-text: #2d3748;
+  --app-text-muted: #718096;
+  --app-primary: #4c6ef5;
+  --app-accent: #5a67d8;
+  --app-card-blue: #a7c7e7;
+  --app-card-orange: #f6ad55;
+  --app-card-green: #81e6d9;
+  --app-card-purple: #b794f4;
+  --app-card-red: #fc8181;
+}
